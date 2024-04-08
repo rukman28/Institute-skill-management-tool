@@ -2,10 +2,15 @@
     <!-- Session Status -->
     <x-auth-session-status class="mb-4" :status="session('status')" />
 
-    <form method="POST" action="{{ route('login') }}">
+    <form method="POST" action="{{ route('sysadmin.login') }}">
         @csrf
+        <div>
+            System Admin Login
+        </div>
 
-        <div>Student Login</div>
+        @if (Session::has('error'))
+            <div>{{session::get('error')}}</div>
+        @endif
 
         <!-- Email Address -->
         <div>
