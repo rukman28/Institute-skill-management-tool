@@ -1,17 +1,20 @@
 
-<div>
-    I am in the System Admin Dashboard
-</div>
-@if(Session::has('error'))
+<x-layout>
     <div>
-        {{session::get('error')}}
+        I am in the System Admin Dashboard
     </div>
+    @if(Session::has('error'))
+        <div>
+            {{session::get('error')}}
+        </div>
 
-@endif
+    @endif
 
-<div>{{Auth::guard('sysadmin')->user()->name}}</div>
+    <div>{{Auth::guard('sysadmin')->user()->name}}</div>
 
-<a href="{{route('sysadmin.logout')}}">Logout</a>
+    <a href="{{route('sysadmin.logout')}}">Logout</a>
 
+
+</x-layout>
 
 

@@ -23,6 +23,7 @@ Route::get('/login',[SysadminController::class,'index'])->name('sysadmin.login_f
 Route::post('/login/owner',[SysadminController::class,'login'])->name('sysadmin.login');
 Route::get('/dashboard',[SysadminController::class,'dashboard'])->name('sysadmin.dashboard')->middleware('sysadmin');
 Route::get('/logout',[SysadminController::class,'logout'])->name('sysadmin.logout')->middleware('sysadmin');
+Route::view('/institutes','sysadmin.institutes')->name('sysadmin.institutes')->middleware('sysadmin');
 
 });
 
