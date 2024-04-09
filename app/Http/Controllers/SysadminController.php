@@ -22,7 +22,7 @@ class SysadminController extends Controller
             return redirect()->route('sysadmin.dashboard')->with('error','System Admin Logged in Successfully!');
         }else{
 
-            return back()->with('Invalid Email Or Password');
+            return back()->with('error','Invalid Email Or Password');
         }
     }
 

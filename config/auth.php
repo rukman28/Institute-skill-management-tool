@@ -45,6 +45,11 @@ return [
             'driver' => 'session',
             'provider' => 'sysadmins',
         ],
+
+        'institute' => [
+            'driver' => 'session',
+            'provider' => 'institutes',
+        ],
     ],
 
     /*
@@ -73,6 +78,11 @@ return [
         'sysadmins' => [
             'driver' => 'eloquent',
             'model' => App\Models\Sysadmin::class,
+        ],
+
+        'institutes' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Institute::class,
         ],
 
         // 'users' => [

@@ -15,10 +15,27 @@
       <div class="hidden w-full md:block md:w-auto" id="navbar-default">
         <ul class="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
           <li>
-            <a href="{{route('sysadmin.dashboard')}}" class="block py-2 px-3 {{Request::is('sysadmin/dashboard') ? 'menu_active' : 'menu_inactive'}}" >Home</a>
+            <a href="{{route('institutes.dashboard')}}" class="block py-2 px-3 {{Request::is('institutes/dashboard') ? 'menu_active' : 'menu_inactive'}}" >Home</a>
           </li>
-          <li>
-            <a href="{{route('sysadmin.institutes.index')}}" class="block py-2 px-3 {{Request::is('institutes') ? 'menu_active' : 'menu_inactive'}}" >Institutes</a>
+            <a href="{{route('institutes.edit',Auth::guard('institute')->user())}}" class="block py-2 px-3 {{Request::is('institutes') ? 'menu_active' : 'menu_inactive'}}" >Edit</a>
+          </li>
+          </li>
+            <a href="#" class="block py-2 px-3 {{Request::is('institutes') ? 'menu_active' : 'menu_inactive'}}" >Programme</a>
+          </li>
+          </li>
+            <a href="#" class="block py-2 px-3 {{Request::is('institutes') ? 'menu_active' : 'menu_inactive'}}" >Module</a>
+          </li>
+          </li>
+            <a href="#" class="block py-2 px-3 {{Request::is('institutes') ? 'menu_active' : 'menu_inactive'}}" >Practical</a>
+          </li>
+          </li>
+            <a href="#" class="block py-2 px-3 {{Request::is('institutes') ? 'menu_active' : 'menu_inactive'}}" >Skill</a>
+          </li>
+          </li>
+            <a href="#" class="block py-2 px-3 {{Request::is('institutes') ? 'menu_active' : 'menu_inactive'}}" >Skill Category</a>
+          </li>
+          </li>
+            <a href="#" class="block py-2 px-3 {{Request::is('institutes') ? 'menu_active' : 'menu_inactive'}}" >Delete</a>
           </li>
         </ul>
       </div>

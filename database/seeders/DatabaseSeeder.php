@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
+use App\Models\Institute;
 use App\Models\Sysadmin;
 use App\Models\User;
 use Illuminate\Database\Seeder;
@@ -29,5 +30,19 @@ class DatabaseSeeder extends Seeder
             'name'=>'sysadmin',
             'email'=>'sysadmin@gmail.com'
         ]);
+
+        Institute::factory(40)->create();
+
+        Institute::factory()->create([
+            'name'=>'Esoft',
+            'email'=>'esoft@gmail.com',
+            'address'=>'Colombo'
+        ]);
+        Institute::factory()->create([
+            'name'=>'IDM',
+            'email'=>'IDM@gmail.com',
+            'address'=>'Negombo'
+        ]);
+
     }
 }
