@@ -5,6 +5,11 @@ namespace Database\Seeders;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 use App\Models\Institute;
+use App\Models\Module;
+use App\Models\Practical;
+use App\Models\Programme;
+use App\Models\Skill;
+use App\Models\Skillcategory;
 use App\Models\Sysadmin;
 use App\Models\User;
 use Illuminate\Database\Seeder;
@@ -31,18 +36,109 @@ class DatabaseSeeder extends Seeder
             'email'=>'sysadmin@gmail.com'
         ]);
 
-        Institute::factory(40)->create();
+        /*----------------------------------Institute with Programme------------------------------------- */
+        Institute::factory(10)->create()->each(function($book){
+
+            $num=random_int(5,30);
+            Programme::factory()->count($num)
+            ->for($book)
+            ->create();
+
+            $num=random_int(5,30);
+            Module::factory()->count($num)
+            ->for($book)
+            ->create();
+
+            $num=random_int(5,30);
+            Practical::factory()->count($num)
+            ->for($book)
+            ->create();
+
+            $num=random_int(5,30);
+            Skill::factory()->count($num)
+            ->for($book)
+            ->create();
+
+            $num=random_int(5,30);
+            Skillcategory::factory()->count($num)
+            ->for($book)
+            ->create();
+
+        });
 
         Institute::factory()->create([
             'name'=>'Esoft',
             'email'=>'esoft@gmail.com',
             'address'=>'Colombo'
-        ]);
+        ])->each(function($book){
+            $num=random_int(5,30);
+            Programme::factory()->count($num)
+            ->for($book)
+            ->create();
+
+            $num=random_int(5,30);
+            Module::factory()->count($num)
+            ->for($book)
+            ->create();
+
+            $num=random_int(5,30);
+            Practical::factory()->count($num)
+            ->for($book)
+            ->create();
+
+            $num=random_int(5,30);
+            Skill::factory()->count($num)
+            ->for($book)
+            ->create();
+
+            $num=random_int(5,30);
+            Skillcategory::factory()->count($num)
+            ->for($book)
+            ->create();
+
+
+
+        });
+
+
         Institute::factory()->create([
             'name'=>'IDM',
             'email'=>'IDM@gmail.com',
             'address'=>'Negombo'
-        ]);
+        ])->each(function($book){
+            $num=random_int(5,30);
+
+            Programme::factory()->count($num)
+            ->for($book)
+            ->create();
+
+            $num=random_int(5,30);
+            Module::factory()->count($num)
+            ->for($book)
+            ->create();
+
+            $num=random_int(5,30);
+            Practical::factory()->count($num)
+            ->for($book)
+            ->create();
+
+            $num=random_int(5,30);
+            Skill::factory()->count($num)
+            ->for($book)
+            ->create();
+
+            $num=random_int(5,30);
+            Skillcategory::factory()->count($num)
+            ->for($book)
+            ->create();
+
+
+
+        });
+
+
+/*----------------------------------End of Institute with Programme------------------------------------- */
+
 
     }
 }

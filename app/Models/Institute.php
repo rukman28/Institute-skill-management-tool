@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
@@ -43,5 +44,30 @@ class Institute extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+
+    public function programmes(): HasMany
+    {
+        return $this->hasMany(Programme::class);
+    }
+
+    public function modules(): HasMany
+    {
+        return $this->hasMany(Programme::class);
+    }
+
+    public function practicals(): HasMany
+    {
+        return $this->hasMany(Programme::class);
+    }
+
+    public function skills(): HasMany
+    {
+        return $this->hasMany(Programme::class);
+    }
+    public function skillcategories(): HasMany
+    {
+        return $this->hasMany(Programme::class);
+    }
 
 }
