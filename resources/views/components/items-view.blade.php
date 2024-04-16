@@ -1,7 +1,9 @@
 
 @props([
     'items',
-    'path'
+    'pathDelete',
+    'pathCreate'
+
 ])
 
 <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
@@ -28,7 +30,7 @@
 
                     <a href="#" class="btn_green">view</a>
 
-                    <form method="POST" action="{{route($path,$item)}}" class="btn_red">
+                    <form method="POST" action="{{route($pathDelete,$item)}}" class="btn_red">
                         @csrf
                         @method('DELETE')
                         <button type="submit">Delete</button>
@@ -46,3 +48,7 @@
 @if($items->count())
     {{$items->links()}}
 @endif
+
+<a href="{{route($pathCreate)}}" class="btn_dark">Add New</a>
+<a href="{{route($pathCreate)}}" class="btn_yellow">Assign</a>
+

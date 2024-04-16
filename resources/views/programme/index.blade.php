@@ -1,3 +1,3 @@
 <x-layout>
-<x-items-view path="programmes.destroy"  :$items/>
+<x-items-view pathDelete="programmes.destroy" pathCreate="programmes.create"  :$items/>
 </x-layout>

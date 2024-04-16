@@ -1,3 +1,3 @@
 <x-layout>
-<x-items-view path="skillcategories.destroy"  :$items/>
+<x-items-view pathDelete="skillcategories.destroy" pathCreate="skillcategories.create"  :$items/>
 </x-layout>

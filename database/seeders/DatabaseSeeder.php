@@ -37,31 +37,31 @@ class DatabaseSeeder extends Seeder
         ]);
 
         /*----------------------------------Institute with Programme------------------------------------- */
-        Institute::factory(10)->create()->each(function($book){
+        Institute::factory(10)->create()->each(function($institute){
 
             $num=random_int(5,30);
             Programme::factory()->count($num)
-            ->for($book)
+            ->for($institute)
             ->create();
 
             $num=random_int(5,30);
             Module::factory()->count($num)
-            ->for($book)
+            ->for($institute)
             ->create();
 
             $num=random_int(5,30);
             Practical::factory()->count($num)
-            ->for($book)
+            ->for($institute)
             ->create();
 
             $num=random_int(5,30);
             Skill::factory()->count($num)
-            ->for($book)
+            ->for($institute)
             ->create();
 
             $num=random_int(5,30);
             Skillcategory::factory()->count($num)
-            ->for($book)
+            ->for($institute)
             ->create();
 
         });
@@ -70,30 +70,30 @@ class DatabaseSeeder extends Seeder
             'name'=>'Esoft',
             'email'=>'esoft@gmail.com',
             'address'=>'Colombo'
-        ])->each(function($book){
+        ])->each(function($institute){
             $num=random_int(5,30);
             Programme::factory()->count($num)
-            ->for($book)
+            ->for($institute)
             ->create();
 
             $num=random_int(5,30);
             Module::factory()->count($num)
-            ->for($book)
+            ->for($institute)
             ->create();
 
             $num=random_int(5,30);
             Practical::factory()->count($num)
-            ->for($book)
+            ->for($institute)
             ->create();
 
             $num=random_int(5,30);
             Skill::factory()->count($num)
-            ->for($book)
+            ->for($institute)
             ->create();
 
             $num=random_int(5,30);
             Skillcategory::factory()->count($num)
-            ->for($book)
+            ->for($institute)
             ->create();
 
 
@@ -105,31 +105,37 @@ class DatabaseSeeder extends Seeder
             'name'=>'IDM',
             'email'=>'IDM@gmail.com',
             'address'=>'Negombo'
-        ])->each(function($book){
+        ])->each(function($institute){
             $num=random_int(5,30);
 
             Programme::factory()->count($num)
-            ->for($book)
+            ->for($institute)
             ->create();
+
+            Programme::factory()
+            ->for($institute)
+            ->create([
+                'name'=>'Computer'
+            ]);
 
             $num=random_int(5,30);
             Module::factory()->count($num)
-            ->for($book)
+            ->for($institute)
             ->create();
 
             $num=random_int(5,30);
             Practical::factory()->count($num)
-            ->for($book)
+            ->for($institute)
             ->create();
 
             $num=random_int(5,30);
             Skill::factory()->count($num)
-            ->for($book)
+            ->for($institute)
             ->create();
 
             $num=random_int(5,30);
             Skillcategory::factory()->count($num)
-            ->for($book)
+            ->for($institute)
             ->create();
 
 

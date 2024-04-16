@@ -9,6 +9,7 @@ use App\Http\Controllers\ProgrammeController;
 use App\Http\Controllers\SkillcategoryController;
 use App\Http\Controllers\SkillController;
 use App\Http\Controllers\SysadminController;
+use App\Models\Module;
 use App\Models\Practical;
 use App\Models\Programme;
 use App\Models\Skill;
@@ -102,43 +103,40 @@ Route::middleware('sysadmin')->group(function(){
 
 /*----------------------Programme Routes---------------------------------- */
 
-// Route::resource('programmes', Programme::class)->middleware('institute');
-
-Route::get('programmes',[ProgrammeController::class,'index'])->name('programmes.index')->middleware('institute');
-Route::delete('programmes/{programme}',[ProgrammeController::class,'destroy'])->name('programmes.destroy')->middleware('institute');
+Route::resource('programmes',ProgrammeController::class)->only('index','destroy','create','store')->middleware('institute');
 /*----------------------End of Programme Routes---------------------------------- */
 
 
 /*----------------------Module Routes---------------------------------- */
 
-Route::get('modules',[ModuleController::class,'index'])->name('modules.index')->middleware('institute');
-Route::delete('modules/{module}',[ModuleController::class,'destroy'])->name('modules.destroy')->middleware('institute');
+Route::resource('modules',ModuleController::class)->only('index','destroy','create','store')->middleware('institute');
+
 
 /*----------------------End of Module Routes---------------------------------- */
 
 
 /*----------------------Practical Routes---------------------------------- */
 
-Route::get('practicals',[PracticalController::class,'index'])->name('practicals.index')->middleware('institute');
-Route::delete('practicals/{practical}',[PracticalController::class,'destroy'])->name('practicals.destroy')->middleware('institute');
+Route::resource('practicals',PracticalController::class)->only('index','destroy','create','store')->middleware('institute');
+
 
 /*----------------------End of Practical Routes---------------------------------- */
 
 
-/*----------------------Practical Routes---------------------------------- */
+/*----------------------Skill Routes---------------------------------- */
 
-Route::get('skills',[SkillController::class,'index'])->name('skills.index')->middleware('institute');
-Route::delete('skills/{skill}',[SkillController::class,'destroy'])->name('skills.destroy')->middleware('institute');
-
-/*----------------------End of Practical Routes---------------------------------- */
+Route::resource('skills',SkillController::class)->only('index','destroy','create','store')->middleware('institute');
 
 
-/*----------------------Practical Routes---------------------------------- */
+/*----------------------End of Skill Routes---------------------------------- */
 
-Route::get('skillcategories',[SkillcategoryController::class,'index'])->name('skillcategories.index')->middleware('institute');
-Route::delete('skillcategories/{skillcategory}',[SkillcategoryController::class,'destroy'])->name('skillcategories.destroy')->middleware('institute');
 
-/*----------------------End of Practical Routes---------------------------------- */
+/*----------------------Skillcategory Routes---------------------------------- */
+
+Route::resource('skillcategories',SkillcategoryController::class)->only('index','destroy','create','store')->middleware('institute');
+
+
+/*----------------------End of Skillcategory Routes---------------------------------- */
 
 
 

@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Programme;
+use App\Rules\UniqueProgramme;
+use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -14,7 +16,7 @@ class ProgrammeController extends Controller
     public function index()
     {
 
-        $programmes=Programme::where('institute_id',Auth::guard('institute')->user()->id)->paginate(10);
+        $programmes=Programme::where('institute_id',Auth::guard('institute')->user()->id)->latest()->paginate(8);
 
         return view('programme.index',['items'=>$programmes]);
     }
@@ -24,7 +26,7 @@ class ProgrammeController extends Controller
      */
     public function create()
     {
-        //
+        return view('programme.create');
     }
 
     /**
@@ -32,7 +34,26 @@ class ProgrammeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        $data=$request->validate([
+            'name'=>[
+                'required',
+                function(string $attribute,mixed $value,Closure $fail){
+                    if(Programme::where([
+                        ['name',$value],
+                         ['institute_id',Auth()->guard('institute')->user()->id]
+                    ])->first()){
+                        $fail("This name aleady exists..!");
+                    }
+                }
+            ]
+        ]);
+
+        $programme=new Programme;
+
+        $programme->create(['name'=>$data['name'],'institute_id'=>Auth()->guard('institute')->user()->id]);
+
+        return redirect()->route('programmes.index')->with('success','Programme has been added successfully!');
     }
 
     /**
