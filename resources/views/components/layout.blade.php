@@ -43,6 +43,13 @@
             @apply block mb-2 text-sm font-medium text-gray-900 dark:text-white
         }
 
+        h1{
+            @apply mb-4 text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl dark:text-white
+        }
+        h2{
+            @apply text-4xl font-extrabold dark:text-white
+        }
+
 
 
 

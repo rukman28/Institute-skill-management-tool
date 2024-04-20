@@ -17,19 +17,19 @@
           <li>
             <a href="{{route('institutes.dashboard')}}" class="block py-2 px-3 {{Request::is('institutes/dashboard') ? 'menu_active' : 'menu_inactive'}}" >Home</a>
           </li>
-            <a href="{{route('institutes.edit',Auth::guard('institute')->user())}}" class="block py-2 px-3 {{Request::is('institutes/*/edit') ? 'menu_active' : 'menu_inactive'}}" >Edit</a>
+            <a href="{{route('institutes.edit',Auth::guard('institute')->user())}}" class="block py-2 px-3 {{Request::is('institutes/*/edit*') ? 'menu_active' : 'menu_inactive'}}" >Edit</a>
           </li>
           </li>
-            <a href="{{route('programmes.index')}}" class="block py-2 px-3 {{Request::is('programmes') ? 'menu_active' : 'menu_inactive'}}" >Programme</a>
+            <a href="{{route('programmes.index')}}" class="block py-2 px-3 {{Request::is('programmes*') ? 'menu_active' : 'menu_inactive'}}" >Programme</a>
           </li>
           </li>
-            <a href="{{route('modules.index')}}" class="block py-2 px-3 {{Request::is('modules') ? 'menu_active' : 'menu_inactive'}}" >Module</a>
+            <a href="{{route('modules.index')}}" class="block py-2 px-3 {{Request::is('modules*') ? 'menu_active' : 'menu_inactive'}}" >Module</a>
           </li>
           </li>
-            <a href="{{route('practicals.index')}}" class="block py-2 px-3 {{Request::is('practicals') ? 'menu_active' : 'menu_inactive'}}" >Practical</a>
+            <a href="{{route('practicals.index')}}" class="block py-2 px-3 {{Request::is('practicals*') ? 'menu_active' : 'menu_inactive'}}" >Practical</a>
           </li>
           </li>
-            <a href="{{route('skills.index')}}" class="block py-2 px-3 {{Request::is('skills') ? 'menu_active' : 'menu_inactive'}}" >Skill</a>
+            <a href="{{route('skills.index')}}" class="block py-2 px-3 {{Request::is('skills*') ? 'menu_active' : 'menu_inactive'}}" >Skill</a>
           </li>
           </li>
             <a href="{{route('skillcategories.index')}}" class="block py-2 px-3 {{Request::is('skillcategories') ? 'menu_active' : 'menu_inactive'}}" >Skill Category</a>

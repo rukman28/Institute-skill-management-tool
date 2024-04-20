@@ -1,6 +1,9 @@
 
 <x-layout :$institute>
-I am in the institute dashboard.
-<a href="{{route('institutes.logout')}}">Logout</a>
+    <h1>
+
+        Institute Dashboard
+    </h1>
+<a href="{{route('institutes.logout')}}"><h2>Logout</h2></a>
 </x-layout>
 
