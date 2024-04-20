@@ -17,4 +17,8 @@ class Programme extends Model
         return $this->belongsTo(Institute::class);
     }
 
+    public function modules(){
+        return $this->belongsToMany(Module::class)->withTimestamps();
+    }
+
 }

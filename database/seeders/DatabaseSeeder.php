@@ -21,7 +21,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        User::factory(10)->create();
+        User::factory(3)->create();
 
         User::factory()->create([
             'name' => 'Student',
@@ -29,122 +29,59 @@ class DatabaseSeeder extends Seeder
         ]);
 
 
-        Sysadmin::factory(10)->create();
+        Sysadmin::factory(3)->create();
 
         Sysadmin::factory()->create([
             'name'=>'sysadmin',
             'email'=>'sysadmin@gmail.com'
         ]);
 
-        /*----------------------------------Institute with Programme------------------------------------- */
-        Institute::factory(10)->create()->each(function($institute){
-
-            $num=random_int(5,30);
-            Programme::factory()->count($num)
-            ->for($institute)
-            ->create();
-
-            $num=random_int(5,30);
-            Module::factory()->count($num)
-            ->for($institute)
-            ->create();
-
-            $num=random_int(5,30);
-            Practical::factory()->count($num)
-            ->for($institute)
-            ->create();
-
-            $num=random_int(5,30);
-            Skill::factory()->count($num)
-            ->for($institute)
-            ->create();
-
-            $num=random_int(5,30);
-            Skillcategory::factory()->count($num)
-            ->for($institute)
-            ->create();
-
-        });
-
-        Institute::factory()->create([
-            'name'=>'Esoft',
-            'email'=>'esoft@gmail.com',
-            'address'=>'Colombo'
-        ])->each(function($institute){
-            $num=random_int(5,30);
-            Programme::factory()->count($num)
-            ->for($institute)
-            ->create();
-
-            $num=random_int(5,30);
-            Module::factory()->count($num)
-            ->for($institute)
-            ->create();
-
-            $num=random_int(5,30);
-            Practical::factory()->count($num)
-            ->for($institute)
-            ->create();
-
-            $num=random_int(5,30);
-            Skill::factory()->count($num)
-            ->for($institute)
-            ->create();
-
-            $num=random_int(5,30);
-            Skillcategory::factory()->count($num)
-            ->for($institute)
-            ->create();
-
-
-
-        });
-
-
-        Institute::factory()->create([
+        $inst=Institute::factory()->create([
             'name'=>'IDM',
-            'email'=>'IDM@gmail.com',
-            'address'=>'Negombo'
-        ])->each(function($institute){
-            $num=random_int(5,30);
+            'email'=>'idm@gmail.com',
+        ]);
 
-            Programme::factory()->count($num)
+        $institutes=Institute::factory(5)->create();
+        $institutes->push($inst);
+
+        foreach($institutes as $institute){
+            Skillcategory::factory()
+            ->count(10)
             ->for($institute)
-            ->create();
+            ->create()->each(function(Skillcategory $skillcategory)use($institute){
+
+                Skill::factory(10)->create([
+                    'institute_id'=>$institute->id,
+                    'skillcategory_id'=>$skillcategory->id,
+                ]);
+            });
 
             Programme::factory()
-            ->for($institute)
-            ->create([
-                'name'=>'Computer'
-            ]);
-
-            $num=random_int(5,30);
-            Module::factory()->count($num)
+            ->count(20)
             ->for($institute)
             ->create();
 
-            $num=random_int(5,30);
-            Practical::factory()->count($num)
+            Module::factory()
+            ->count(40)
             ->for($institute)
             ->create();
 
-            $num=random_int(5,30);
-            Skill::factory()->count($num)
+            Practical::factory()
+            ->count(50)
             ->for($institute)
             ->create();
-
-            $num=random_int(5,30);
-            Skillcategory::factory()->count($num)
-            ->for($institute)
-            ->create();
+        }
 
 
+        $this->call([
+            ModuleProgrammeTableSeeder::class,
+            ModulePracticalTableSeeder::class,
+            PracticalSkillTableSeeder::class,
+        ]);
 
-        });
 
-
-/*----------------------------------End of Institute with Programme------------------------------------- */
 
 
     }
 }
+

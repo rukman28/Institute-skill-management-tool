@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Skillcategory;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -18,7 +19,8 @@ class SkillFactory extends Factory
     {
         return [
             'name'=>fake()->name(),
-            'institute_id'=>null,
+            'institute_id'=>1,
+            'skillcategory_id'=>null,
 
         ];
     }

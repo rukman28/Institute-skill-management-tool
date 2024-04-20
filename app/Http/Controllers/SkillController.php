@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Skill;
+use App\Models\Skillcategory;
 use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -15,17 +16,19 @@ class SkillController extends Controller
         $skills=Skill::where('institute_id',Auth::guard('institute')->user()->id)->latest()->paginate(8);
 
         return view('skill.index',['items'=>$skills]);
-    }
+    }//END ACTION
 
     public function destroy(Skill $skill)
     {
         $skill->delete();
         return back()->with('success','Deleted successfully!');
-    }
+    }//END ACTION
 
     public function create(){
-        return view('skill.create');
-    }
+        $skillCategories=Skillcategory::where('institute_id',Auth()->guard('institute')->user()->id)->get();
+
+        return view('skill.create',compact('skillCategories'));
+    }//END ACTION
 
     public function store(Request $request){
         $data=$request->validate([
@@ -39,14 +42,30 @@ class SkillController extends Controller
                         $fail("This name already exists..!");
                     }
                 }
-            ]
+            ],
+            'skillcategory'=>['required']
         ]);
 
         $skill=new Skill;
-        $skill->create(['name'=>$data['name'],
+        $skill->create(['name'=>$data['name'],'skillcategory_id'=>$data['skillcategory'],
         'institute_id'=>Auth()->guard('institute')->user()->id]);
 
         return redirect()->route('skills.index')->with('success','The Skill added successfully..!');
+    }//END ACTION
+
+
+    public function show(Skill $skill){
+
+        $practicals=$skill->practicals()->paginate();
+
+        return view('skill.practicals',['items'=>$practicals,'parentItem'=>$skill]);
+    }//End Action
+
+
+    public function indexSkillcategory(Skill $skill){
+        $skillcategories=$skill->skillcategory()->latest()->paginate(1);
+
+        return view('skill.skillcategory',['items'=>$skillcategories,'parentItem'=>$skill]);
     }
 
 

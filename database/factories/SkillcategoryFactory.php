@@ -18,7 +18,7 @@ class SkillcategoryFactory extends Factory
     {
         return [
             'name'=>fake()->name(),
-            'institute_id'=>null,
+            'institute_id'=>1,
 
         ];
     }

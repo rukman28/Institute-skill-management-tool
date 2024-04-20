@@ -28,6 +28,11 @@ class SkillcategoryController extends Controller
         return view('skillcategory.create');
     }
 
+    public function show(Skillcategory $skillcategory){
+            $skills=$skillcategory->skills()->paginate(5);
+            return view('skillcategory.show',['items'=>$skills]);
+    }
+
     public function store(Request $request){
         $data=$request->validate([
             'name'=>[

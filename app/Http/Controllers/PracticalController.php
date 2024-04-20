@@ -12,6 +12,7 @@ class PracticalController extends Controller
 {
     public function index(){
 
+
         $practicals=Practical::where('institute_id',Auth::guard('institute')->user()->id)->latest()->paginate(8);
 
         return view('practical.index',['items'=>$practicals]);
