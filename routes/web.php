@@ -139,7 +139,6 @@ Route::get('skills/{skill}/skillcategory',[SkillController::class,'indexSkillcat
 /*----------------------Skillcategory Routes---------------------------------- */
 
 Route::resource('skillcategories',SkillcategoryController::class)->only('index','destroy','create','store','show')->middleware('institute');
-Route::get('skills/skillcategories/{skillcategory}',[SkillcategoryController::class,'show'])->name('skillcategory.skills'); //This used just to maintain the Nav url active
 
 
 /*----------------------End of Skillcategory Routes---------------------------------- */

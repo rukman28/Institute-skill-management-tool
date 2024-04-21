@@ -38,11 +38,14 @@
                     <a href="{{route($button2_path,$item)}}" class="btn_green">{{$button2_name}}</a>
                     @endisset
 
+                    @isset($pathDelete)
+
                     <form method="POST" action="{{route($pathDelete,$item)}}" class="btn_red">
                         @csrf
                         @method('DELETE')
                         <button type="submit">Delete</button>
                     </form>
+                    @endisset
                 </td>
             </tr>
             @empty

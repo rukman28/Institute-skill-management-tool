@@ -32,7 +32,7 @@
             <a href="{{route('skills.index')}}" class="block py-2 px-3 {{Request::is('skills*') ? 'menu_active' : 'menu_inactive'}}" >Skill</a>
           </li>
           </li>
-            <a href="{{route('skillcategories.index')}}" class="block py-2 px-3 {{Request::is('skillcategories') ? 'menu_active' : 'menu_inactive'}}" >Skill Category</a>
+            <a href="{{route('skillcategories.index')}}" class="block py-2 px-3 {{Request::is('skillcategories*') ? 'menu_active' : 'menu_inactive'}}" >Skill Category</a>
           </li>
           </li>
             <a href="#" class="block py-2 px-3 {{Request::is('institutes') ? 'menu_active' : 'menu_inactive'}}" >Delete</a>
