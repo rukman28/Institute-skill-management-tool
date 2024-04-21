@@ -10,12 +10,12 @@ class ModulePracticalController extends Controller
 {
     public function indexPracticals(Module $module){
         $practicals=$module->practicals()->latest()->paginate(4);
-        return view('module_practical.practicals',['items'=>$practicals,'parentItem'=>$module]);
+        return view('module.practicals',['items'=>$practicals,'parentItem'=>$module]);
     }
 
     public function indexModules(Practical $practical){
         $modules=$practical->modules()->latest()->paginate(5);
-        return view('module_practical.modules',['items'=>$modules,'parentItem'=>$practical]);
+        return view('practical.modules',['items'=>$modules,'parentItem'=>$practical]);
     }
 
     public function destroy(Module $module,Practical $practical){

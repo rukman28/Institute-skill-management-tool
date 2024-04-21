@@ -60,5 +60,5 @@
 @endif
 
 
-<a href="{{route($pathCreate,$parentItem)}}" class="btn_dark">Assign</a>
+<a href="{{route($pathCreate,$parentItem)}}" class="btn_dark">Assign {{$itemName}}</a>
 

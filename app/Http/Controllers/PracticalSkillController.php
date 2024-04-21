@@ -11,7 +11,7 @@ class PracticalSkillController extends Controller
     public function index(Practical $practical){
         $skills=$practical->skills()->latest()->paginate(5);
 
-        return view('practical_skill.index',['items'=>$skills,'parentItem'=>$practical]);
+        return view('practical.skills',['items'=>$skills,'parentItem'=>$practical]);
     }
 
 
@@ -19,7 +19,7 @@ class PracticalSkillController extends Controller
 
         $practicals=$skill->practicals()->latest()->paginate(5);
 
-        return view('practical_skill.practicals',['items'=>$practicals,'parentItem'=>$skill]);
+        return view('skill.practicals',['items'=>$practicals,'parentItem'=>$skill]);
     }
 
     public function create(){

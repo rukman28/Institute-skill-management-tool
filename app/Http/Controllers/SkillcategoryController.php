@@ -30,7 +30,7 @@ class SkillcategoryController extends Controller
 
     public function show(Skillcategory $skillcategory){
             $skills=$skillcategory->skills()->paginate(5);
-            return view('skillcategory.show',['items'=>$skills]);
+            return view('skillcategory.skills',['items'=>$skills]);
     }
 
     public function store(Request $request){

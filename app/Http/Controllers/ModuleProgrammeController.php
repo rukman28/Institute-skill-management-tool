@@ -18,13 +18,13 @@ class ModuleProgrammeController extends Controller
     public function indexModules(Programme $programme){
         $modules=$programme->modules()->latest()->paginate(4);
 
-        return view('module_programme.modules',['items'=>$modules,'parentItem'=>$programme]);
+        return view('programme.modules',['items'=>$modules,'parentItem'=>$programme]);
 
     }
 
     public function indexProgrammes(Module $module){
         $programmes=$module->programmes()->latest()->paginate(5);
 
-        return view('module_programme.programmes',['items'=>$programmes,'parentItem'=>$module]);
+        return view('module.programmes',['items'=>$programmes,'parentItem'=>$module]);
     }
 }
