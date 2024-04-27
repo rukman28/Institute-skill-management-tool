@@ -150,18 +150,22 @@ Route::scopeBindings()->group(function(){
     Route::get('programmes/module_programmes/{programme}/module',[ModuleProgrammeController::class,'indexModules'])->name('module_programmes.index'); // Find Modules for a Programme
     Route::get('modules/module_programmes/{module}/programme',[ModuleProgrammeController::class,'indexProgrammes'])->name('module_programmes.module'); // Find programmes for a module
     Route::delete('module_programmes/{programme}/modules/{module}',[ModuleProgrammeController::class,'destroy'])->name('module_programmes.destroy');
-    Route::delete('module_programmes/{programme}/modules/create',[ModuleProgrammeController::class,'create'])->name('module_programmes.create');
+    Route::get('programmes/module_programmes/{programme}/modules/create',[ModuleProgrammeController::class,'create'])->name('module_programmes.create');
+    Route::post('programmes/module_programmes/{programme}/modules/store',[ModuleProgrammeController::class,'store'])->name('module_programmes.store');
+
 
 
     Route::get('modules/module_practicals/{module}/practical',[ModulePracticalController::class,'indexPracticals'])->name('module_practicals.index');//Find Practicals for a Module
     Route::get('practicals/module_practicals/{practical}/module',[ModulePracticalController::class,'indexModules'])->name('module_practicals.practical'); //Find Modules for a Practical
     Route::delete('module_practicals/{module}/practicals/{practical}',[ModulePracticalController::class,'destroy'])->name('module_practicals.destroy');
-    Route::delete('module_practicals/{module}/practicals/create',[ModulePracticalController::class,'create'])->name('module_practicals.create');
+    Route::get('modules/module_practicals/{module}/practicals/create',[ModulePracticalController::class,'create'])->name('module_practicals.create');
+    Route::post('module_practicals/{module}/practicals/store',[ModulePracticalController::class,'store'])->name('module_practicals.store');
 
     Route::get('practicals/practical_skills/{practical}/skill',[PracticalSkillController::class,'index'])->name('practical_skills.index');//Find Skills per Practical
     Route::get('skills/practical_skills/{skill}/practical',[PracticalSkillController::class,'indexPracticals'])->name('practical_skills.skill'); //Find Practicals per Skill
     Route::delete('practical_skills/{practical}/skills/{skill}',[PracticalSkillController::class,'destroy'])->name('practical_skills.destroy');
-    Route::delete('practical_skills/{practical}/skills/create',[PracticalSkillController::class,'create'])->name('practical_skills.create');
+    Route::get('practical_skills/{practical}/skills/create',[PracticalSkillController::class,'create'])->name('practical_skills.create');
+    Route::post('practical_skills/{practical}/skills/store',[PracticalSkillController::class,'store'])->name('practical_skills.store');
 
 });
 

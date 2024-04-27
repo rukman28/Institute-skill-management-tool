@@ -1,5 +1,4 @@
-This is assignment create page
 
-{{-- <x-layout>
-    <x-assignment-create />
-</x-layout> --}}
+<x-layout>
+    <x-assignment-create :$parentItem parentItemName="programme" :$items itemName="module" pathAssign="module_programmes.store" />
+</x-layout>

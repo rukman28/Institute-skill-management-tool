@@ -15,7 +15,7 @@ class InstituteController extends Controller
 {
     public function index()
     {
-        return view('institute.index',['institutes'=>Institute::latest()->paginate(8)]);
+        return view('institute.index',['institutes'=>Institute::latest('updated_at')->paginate(8)]);
     }//END METHOD
 
     public function create()
@@ -25,13 +25,17 @@ class InstituteController extends Controller
 
     public function store(UserCreateRequest $request)
     {
-        Institute::create($request->validated());
-        if(Auth::guard('sysadmin')->check()){
-            return redirect()->route('sysadmin.institutes.index');
-        }elseif(Auth::guard('institute')->check()){
-            return redirect()->route('institutes.index');
+        // dd('I am here');
+        // Institute::create($request->validated());
+        // if(Auth::guard('sysadmin')->check()){
+        //     return redirect()->route('sysadmin.institutes.index');
+        // }elseif(Auth::guard('institute')->check()){
+        //     return redirect()->route('institutes.index');
 
-        }
+        // }
+
+        Institute::create($request->validated());
+        return redirect()->route('sysadmin.institutes.index');
 
     }//END METHOD
 
@@ -52,19 +56,34 @@ class InstituteController extends Controller
         $institute->update($request->validated());
 
         if(Auth::guard('sysadmin')->check()){
-            return redirect()->route('sysadmin.institutes.index');
+            return redirect()->route('sysadmin.institutes.index')->with('success','The address has been changed successfully!');
 
         }elseif(Auth::guard('institute')->check()){
 
-            return redirect()->route('institutes.dashboard');
+            return redirect()->route('institutes.dashboard')->with('success','The address has been changed successfully!');
         }
     }//END METHOD
 
 
     public function destroy(Institute $institute)
     {
+        $programmes=$institute->programmes;
+        foreach($programmes as $programme){
+            $programme->modules()->sync([]);
+        }
+
+        $modules=$institute->modules;
+        foreach($modules as $module){
+            $module->practicals()->sync([]);
+        }
+
+        $practicals=$institute->practicals;
+        foreach($practicals as $practical){
+            $practical->skills()->sync([]);
+        }
+
         $institute->delete();
-        return back()->with('success','Item has been deleted successfully!');
+        return back()->with('success','The Institute has been deleted successfully!');
     }//END METHOD
 
 

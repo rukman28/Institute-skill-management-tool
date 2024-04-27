@@ -19,11 +19,21 @@ class ModuleController extends Controller
     }
 
     public function destroy(Module $module){
+
+        if($module->programmes()->count()){
+            return back()->with('warning','Module has assinged to Programmes!');
+        }
+
+        if($module->practicals()->count()){
+            return back()->with('warning','Module contains Practical!');
+
+        }
+
         $module->delete();
 
-        return back()->with('success','Deleted successfully!');
+        return back()->with('success','The Module has been deleted successfully!');
 
-    }
+    }//End Action
 
     public function create(){
         return view('module.create');

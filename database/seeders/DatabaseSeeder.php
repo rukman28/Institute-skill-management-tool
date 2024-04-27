@@ -41,33 +41,33 @@ class DatabaseSeeder extends Seeder
             'email'=>'idm@gmail.com',
         ]);
 
-        $institutes=Institute::factory(5)->create();
+        $institutes=Institute::factory(10)->create();
         $institutes->push($inst);
 
         foreach($institutes as $institute){
             Skillcategory::factory()
-            ->count(10)
+            ->count(5)
             ->for($institute)
             ->create()->each(function(Skillcategory $skillcategory)use($institute){
 
-                Skill::factory(10)->create([
+                Skill::factory(5)->create([
                     'institute_id'=>$institute->id,
                     'skillcategory_id'=>$skillcategory->id,
                 ]);
             });
 
             Programme::factory()
-            ->count(20)
+            ->count(10)
             ->for($institute)
             ->create();
 
             Module::factory()
-            ->count(40)
+            ->count(10)
             ->for($institute)
             ->create();
 
             Practical::factory()
-            ->count(50)
+            ->count(10)
             ->for($institute)
             ->create();
         }

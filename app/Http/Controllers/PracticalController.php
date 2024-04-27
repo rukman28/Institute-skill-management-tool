@@ -18,12 +18,18 @@ class PracticalController extends Controller
         return view('practical.index',['items'=>$practicals]);
 
 
-    }
+    }//End Action
 
     public function destroy(Practical $practical){
+        if($practical->modules()->count()){
+            return back()->with('warning','Practical has assinged to Modules!');
+        }elseif($practical->skills()->count()){
+            return back()->with('warning','Practical contains Skills!');
+        }
+
         $practical->delete();
 
-        return back()->with('success','Deleted successfully!');
+        return back()->with('success','The Practical has been deleted successfully!');
 
     }
 

@@ -18,7 +18,7 @@
             <a href="{{route('sysadmin.dashboard')}}" class="block py-2 px-3 {{Request::is('sysadmin/dashboard') ? 'menu_active' : 'menu_inactive'}}" >Home</a>
           </li>
           <li>
-            <a href="{{route('sysadmin.institutes.index')}}" class="block py-2 px-3 {{Request::is('institutes') ? 'menu_active' : 'menu_inactive'}}" >Institutes</a>
+            <a href="{{route('sysadmin.institutes.index')}}" class="block py-2 px-3 {{Request::is('sysadmin/institute*') ? 'menu_active' : 'menu_inactive'}}" >Institutes</a>
           </li>
         </ul>
       </div>

@@ -1,5 +1,5 @@
 <x-layout>
-    {{$errors}}
+    {{-- {{$errors}} --}}
 
 <x-email-change :$institute />
 </x-layout>

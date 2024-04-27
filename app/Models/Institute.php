@@ -53,21 +53,21 @@ class Institute extends Authenticatable
 
     public function modules(): HasMany
     {
-        return $this->hasMany(Programme::class);
+        return $this->hasMany(Module::class);
     }
 
     public function practicals(): HasMany
     {
-        return $this->hasMany(Programme::class);
+        return $this->hasMany(Practical::class);
     }
 
     public function skills(): HasMany
     {
-        return $this->hasMany(Programme::class);
+        return $this->hasMany(Skill::class);
     }
     public function skillcategories(): HasMany
     {
-        return $this->hasMany(Programme::class);
+        return $this->hasMany(Skillcategory::class);
     }
 
 }

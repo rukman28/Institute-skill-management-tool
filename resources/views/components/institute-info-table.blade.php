@@ -3,6 +3,7 @@
     'institutes'
 ])
 
+
 <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
     <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
         <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
@@ -36,15 +37,15 @@
                     {{$institute->address}}
                 </td>
                 <td class="px-6 py-4 flex justify-center items-center">
-                    @auth('sysadmin')
-                        <a href="{{route('sysadmin.institutes.edit',$institute)}}" class="btn_yellow">Edit</a>
-                        <a href="{{route('sysadmin.institutes.show',$institute)}}" class="btn_green">View</a>
-                     @elseif('institute')
-                        <a href="{{route('institutes.edit',$institute)}}" class="btn_yellow">Edit</a>
-                        <a href="{{route('institutes.show',$institute)}}" class="btn_green">View</a>
-                    @else
+                    {{-- @auth('sysadmin') --}}
+                        <a href="{{route('sysadmin.institutes.edit',$institute)}}" class="btn_green">Edit</a>
+                        {{-- <a href="{{route('sysadmin.institutes.show',$institute)}}" class="btn_green">View</a> --}}
 
-                    @endauth
+                     {{-- @elseauth('institute')
+                        <a href="{{route('institutes.edit',$institute)}}" class="btn_yellow">Edit</a>
+                        <a href="{{route('institutes.show',$institute)}}" class="btn_green">View</a> --}}
+
+                    {{-- @endauth --}}
                     <form method="POST" action="{{route('sysadmin.institutes.destroy',$institute)}}" class="btn_red">
                         @csrf
                         @method('DELETE')
@@ -63,3 +64,6 @@
 @if($institutes->count())
     {{$institutes->links()}}
 @endif
+
+<a href="{{route('sysadmin.institutes.create')}}" class="btn_dark">Add New</a>
+

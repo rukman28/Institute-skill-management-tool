@@ -14,8 +14,8 @@ return new class extends Migration
         Schema::create('skills', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->foreignId('institute_id')->constrained();
-            $table->foreignId('skillcategory_id')->constrained()->onDelete('cascade');
+            $table->foreignId('institute_id')->constrained()->onDelete('cascade');
+            $table->foreignId('skillcategory_id')->constrained();
             $table->timestamps();
         });
     }

@@ -20,18 +20,25 @@ class SkillcategoryController extends Controller
 
     public function destroy(Skillcategory $skillcategory)
     {
+        if($skillcategory->skills()->count()){
+            return back()->with('warning','This Skill Category contains skills!');
+        }
         $skillcategory->delete();
-        return back()->with('success','Deleted successfully!');
+        return back()->with('success','The Skill Category has been deleted successfully!');
     }
 
     public function create(){
         return view('skillcategory.create');
     }
 
+
+
     public function show(Skillcategory $skillcategory){
             $skills=$skillcategory->skills()->paginate(5);
-            return view('skillcategory.skills',['items'=>$skills]);
+            return view('skillcategory.skills',['items'=>$skills,'parentItem'=>$skillcategory]);
     }
+
+
 
     public function store(Request $request){
         $data=$request->validate([

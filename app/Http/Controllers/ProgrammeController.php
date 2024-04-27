@@ -86,7 +86,11 @@ class ProgrammeController extends Controller
      */
     public function destroy(Programme $programme)
     {
+
+        if($programme->modules()->count()){
+            return back()->with('warning','Programme contains assigned Modules!');
+        }
         $programme->delete();
-        return back()->with('success','Deleted successfully!');
+        return back()->with('success','The Programme has been deleted successfully!');
     }
 }

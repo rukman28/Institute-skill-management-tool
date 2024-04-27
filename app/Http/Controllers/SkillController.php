@@ -20,8 +20,14 @@ class SkillController extends Controller
 
     public function destroy(Skill $skill)
     {
-        $skill->delete();
-        return back()->with('success','Deleted successfully!');
+        if($skill->practicals()->count()){
+            return back()->with('warning','The skill contains practicals!');
+        }
+        else{
+
+            $skill->delete();
+            return back()->with('success','The Skill has been deleted successfully!');
+        }
     }//END ACTION
 
     public function create(){
@@ -63,7 +69,7 @@ class SkillController extends Controller
 
 
     public function indexSkillcategory(Skill $skill){
-        $skillcategories=$skill->skillcategory()->latest()->paginate(1);
+        $skillcategories=$skill->skillcategory()->paginate(1);
 
         return view('skill.skillcategory',['items'=>$skillcategories,'parentItem'=>$skill]);
     }
