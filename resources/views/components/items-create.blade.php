@@ -3,7 +3,7 @@
     'name',
     'skillCategories'
 ])
-{{$errors}}
+
 
 <form method="POST" action="{{route($path)}}" class="max-w-sm mx-auto">
     @csrf

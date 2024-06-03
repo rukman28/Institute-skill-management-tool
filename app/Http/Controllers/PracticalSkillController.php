@@ -52,7 +52,7 @@ class PracticalSkillController extends Controller
 
         $practical->skills()->syncWithoutDetaching($data['checked_ids']);
 
-        return back()->with('errors','The skills were added to the practical successfully!');
+        return back()->with('success','The skills were added to the practical successfully!');
 
     }
 

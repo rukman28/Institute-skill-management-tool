@@ -17,7 +17,7 @@ class Institute
     public function handle(Request $request, Closure $next): Response
     {
         if(!Auth::guard('institute')->check()){
-            return redirect()->route('institutes.login_form')->with('error','Please Login First');
+            return redirect()->route('landing')->with('error','Please Login First!');
         }
         return $next($request);
     }

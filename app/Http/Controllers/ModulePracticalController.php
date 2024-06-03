@@ -45,7 +45,7 @@ class ModulePracticalController extends Controller
 
         $module->practicals()->syncWithoutDetaching($data['checked_ids']);
 
-        return back()->with('errors','The practicals were added to the module successfully!');
+        return back()->with('success','The practicals were added to the module successfully!');
 
 
     }

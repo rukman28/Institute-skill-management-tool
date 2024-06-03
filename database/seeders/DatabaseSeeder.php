@@ -77,6 +77,7 @@ class DatabaseSeeder extends Seeder
             ModuleProgrammeTableSeeder::class,
             ModulePracticalTableSeeder::class,
             PracticalSkillTableSeeder::class,
+            ProgrammeUserSeeder::class,
         ]);
 
 

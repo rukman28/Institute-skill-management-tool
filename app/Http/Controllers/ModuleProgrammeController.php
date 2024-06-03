@@ -53,7 +53,7 @@ class ModuleProgrammeController extends Controller
 
         $programme->modules()->syncWithoutDetaching($data['checked_ids']);
 
-        return back()->with('errors','The modules were added to the programme successfully!');
+        return back()->with('success','The modules were added to the programme successfully!');
 
     }
 }

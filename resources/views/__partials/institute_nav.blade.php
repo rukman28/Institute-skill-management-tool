@@ -79,7 +79,7 @@
                                                     <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Show Students</a>
                                                   </li>
                                                   <li>
-                                                    <a href="{{route('register')}}" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Register Student</a>
+                                                    <a href="{{route('find.user.create')}}" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Register Student</a>
                                                   </li>
 
                                                 </ul>

@@ -8,7 +8,8 @@ use Illuminate\Support\Facades\Auth;
 class InstituteGuardController extends Controller
 {
     public function index(){
-        return view('institute.login_form');
+        // return view('institute.login_form');
+        return redirect()->route('landing');
     }
 
     public function Dashboard(){
@@ -19,6 +20,7 @@ class InstituteGuardController extends Controller
 
     public function login(Request $request){
        $check=$request;
+
 
         if(Auth::guard('institute')->attempt(['email' => $check['email'],
         'password' => $check['password']])){
