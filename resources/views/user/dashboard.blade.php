@@ -10,6 +10,10 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
                     {{ __("You're logged in!") }}
+
+                    <div class="flex justify-center">
+                        <h1 class=" text-3xl text-neutral-700">Under development...!</h1>
+                    </div>
                 </div>
             </div>
         </div>
