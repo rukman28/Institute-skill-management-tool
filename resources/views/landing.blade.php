@@ -25,7 +25,7 @@
                 <button
                     class="inline-block p-4 border-b-2 rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300"
                     id="dashboard-tab" data-tabs-target="#dashboard" type="button" role="tab"
-                    aria-controls="dashboard" aria-selected="false">My Admin</button>
+                    aria-controls="dashboard" aria-selected="false">Admin</button>
             </li>
         </ul>
     </div>
