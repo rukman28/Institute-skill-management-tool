@@ -8,7 +8,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
 
 
-    <title>Document</title>
+    <title>Document | Rukman</title>
 </head>
 
 <body>
