@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\ValidationException;
+
 
 class InstituteGuardController extends Controller
 {
@@ -23,18 +25,25 @@ class InstituteGuardController extends Controller
     public function login(Request $request)
     {
         $check = $request->validate([
-            'email' => 'required|email',
-            'password' => 'required'
+            'emailAdmin' => 'required|email',
+            'passwordAdmin' => 'required'
         ]);;
 
 
         if (Auth::guard('institute')->attempt([
-            'email' => $check['email'],
-            'password' => $check['password']
+            'email' => $check['emailAdmin'],
+            'password' => $check['passwordAdmin']
         ])) {
             return redirect()->route('institutes.dashboard')->with('error', 'Institute logged in successfully!');
         } else {
-            return redirect()->route('landing')->with('error', 'Invalid Email Or Password');
+
+            /*
+            **The throw validatinException function is used to call the auth.failed built in error message.
+            **
+            */
+            throw ValidationException::withMessages([
+                'emailAdmin' => trans('auth.failed'),
+            ]);
         }
     }
 
